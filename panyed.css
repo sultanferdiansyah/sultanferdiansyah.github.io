@@ -1,187 +1,198 @@
-let i = 0;
-let n = ' Ferdi';
-let g = 'Good ';
-
-let pagi = g + 'morning,' + n;
-let siang = g + 'afternoon,' + n;
-let malam = g + 'evening,' + n;
-let malem = g + 'night,' + n;
-
-//DOM elements
-let showTeks = document.querySelector('.teks');
-let showJam = document.querySelector('.jam');
-let random = document.querySelector('.quo');
-let element = document.querySelector("#background")
-let showBg = document.body.style.backgroundColor;
-
-//Quotes alay
-const texts = [
-
-    "Kamu tau apa yang lebih berat dari pegunungan?, ya hanya bisa mencintaimu dari jauh. -Faraa",
-    "aku memiliki kesetiaan untukmu meskipun tidak bisa memberikan sentuhan dan pelukan untukmu. -Ferdi",
-    "Kita dapat saling memberi kasih sayang dan cinta meski kita tidak pernah bertemu -Faraa Ferdi",
-    "Faraa♡Ferdi",
-    "I Love You Baby. -Faraa",
-    "I wish we can spend the day together. -Faraa",
-    "Every second, I Love You. -Faraa",
-    "I will come for you and for our love. -Ferdi"
-
-];
-
-//Initialize
-function init() {
-    startTime();
-    randQuo();
-	jamS();
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background-attachment: fixed;
+    background-position: center;
 }
 
-//Show clock
-function startTime() {
+.jam {
+    color: #fff;
+    font-size: 40px;
+    font-family: Oxanium;
+}
 
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-	var s = today.getSeconds();
-	
-    m = checkTime(m);
-	s = checkTime(s);
-	
-    showJam.innerHTML = h + ":" + m + ":" + s;
-	var t = setTimeout(startTime, 500);
-	
-  }
+.grid {
 
-  function checkTime(i) {
-    if (i < 10) {i = "0" + i};
-	return i;
-	
-  }
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+    text-align: center;
 
-  //Show random quote
-  function randQuo() {
+}
 
-    random.innerHTML = texts[Math.floor(Math.random()*texts.length)]
+.teks {
+    font-size: 23px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    margin-top: 5px;
+    font-family: Oxanium;
+    color: white;
+    animation: 
+      typing 5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
 
-  }
+.quo {
+    font-size: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    margin-top: 10px;
+    font-family: Oxanium;
+    color: white;
+    opacity: 0.7;
+    margin-left: 7%; margin-right: 7%;
+}
 
-  //Show clock
-  function jamS() {
-	
-    var myDate = new Date();
-	var hourNow = myDate.getHours();
-	
-    if (hourNow < 12) {
-      showTeks.innerHTML = pagi;
-      showBg = element.classList.add("pagi");
-    } else if (hourNow >= 12 && hourNow <= 15) {
-	  showTeks.innerHTML = siang;
-	  showBg = element.classList.add("siang");
-    } else if (hourNow > 15 && hourNow < 19) {
-      showTeks.innerHTML = siang;
-      showBg = element.classList.add("sore");
-    } else if ( hourNow >= 19 && hourNow <= 24){
-      showTeks.innerHTML = malam;
-      showBg = element.classList.add("malam");
-    } else {
-	  showBg = element.classList.add("malam");
+#musicShow {
+    display: none;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+}
+
+@keyframes heartfade {
+    0% {
+        opacity : 1;
     }
-  }
+    50% {
+        opacity : 0;
+    }
+}
+.heart {
+    z-index : 999;
+    animation : heartfade 6s linear;
+    position : absolute; 
+}
+.heart:before,
+.heart:after {
+    content : "";
+    background-color : #ff2e66;
+    position : absolute;
+    height : 30px;
+    width : 45px;
+    border-radius : 15px 0px 0px 15px;
+}
 
-  var brd = document.createElement("DIV");
-		document.body.insertBefore(brd, document.getElementById("board"));
+.heart:before {
+    transform : rotate(45deg);
+}
 
-		const duration = 3000;
-		const speed = 0.5;
-		const cursorXOffset = 0;
-		const cursorYOffset = -5;
+.heart:after {
+    left : 10.5px;
+    transform : rotate(135deg);
+}
 
-		var hearts = [];
-        
-    //Generate heart effect
-	function generateHeart(x, y, xBound, xStart, scale) {
-        
-        var heart = document.createElement("DIV");
-		heart.setAttribute('class', 'heart');
-		brd.appendChild(heart);
-		heart.time = duration;
-		heart.x = x;
-		heart.y = y;
-		heart.bound = xBound;
-		heart.direction = xStart;
-		heart.style.left = heart.x + "px";
-		heart.style.top = heart.y + "px";
-		heart.scale = scale;
-        heart.style.transform = "scale(" + scale + "," + scale + ")";
-        
-		if(hearts == null)
-				hearts = [];
-			hearts.push(heart);
-			return heart;
-		}
+.pagi {
+	background: linear-gradient(-45deg, #2da0ff, #1d1ad3, #1b62fc, #1446eb);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
-		var down = false;
-		var event = null;
+.siang {
+    background: linear-gradient(-45deg, #ebdb00, #ecd60d, #ffbc05, #f79424);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
-		document.onmousedown = function(e) {
-			down = true;
-			event = e;
-		}
+.sore {
+    background: linear-gradient(-45deg, #ff9900, #ff7b00, #ff7300, #fd6601);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
-		document.onmouseup = function(e) {
-			down = false;
-		}
+.malam {
+    background: linear-gradient(-45deg, #061852, #010f2e, #000718, #000000);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
-		document.onmousemove = function(e) {
-			event = e;
-		}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
-		document.ontouchstart = function(e) {
-			down = true;
-			event = e.touches[0];
-		}
-
-		document.ontouchend = function(e) {
-			down = false;
-		}
-
-		document.ontouchmove = function(e) {
-			event = e.touches[0];
-		}
-
-		var before = Date.now();
-		var id = setInterval(frame, 5);
-		var gr = setInterval(check, 100);
-
-		function frame() {
-
-			var current = Date.now();
-			var deltaTime = current - before;
-			before = current;
-			for(i in hearts) {
-				var heart = hearts[i];
-				heart.time -= deltaTime;
-				if(heart.time > 0)
-				{
-					heart.y -= speed;
-					heart.style.top = heart.y + "px";
-					heart.style.left = heart.x + heart.direction * heart.bound * Math.sin(heart.y * heart.scale / 30) / heart.y * 200 + "px";
-				}
-				else
-				{
-					heart.parentNode.removeChild(heart);
-					hearts.splice(i, 1);
-				}
-			}
-		}
-
-		function check() {
-            
-            if(down) {
-                
-                var start = 1 - Math.round(Math.random()) * 2;
-				var scale = Math.random() * Math.random() * 0.8 + 0.2;
-                var bound = 30 + Math.random() * 20;
-                generateHeart(event.pageX - brd.offsetLeft + cursorXOffset, event.pageY - brd.offsetTop + cursorYOffset, bound, start, scale);
-
-			}
-		}
+.box-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.box-area li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.301);
+    animation: animate 20s linear infinite;
+    bottom: -200px;
+}
+.box-area li:nth-child(1) {
+    left: 86%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+.box-area li:nth-child(2) {
+    left: 12%;
+    width: 30px;
+    height: 30px;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+}
+.box-area li:nth-child(3) {
+    left: 70%;
+    width: 100px;
+    height: 100px;
+    animation-delay: 5.5s;
+}
+.box-area li:nth-child(4) {
+    left: 42%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 15s;
+}
+.box-area li:nth-child(5) {
+    left: 65%;
+    width: 40px;
+    height: 40px;
+    animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+    left: 15%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3.5s;
+}
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px) rotate(360deg);
+        opacity: 0;
+    }
+}
