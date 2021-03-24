@@ -21,9 +21,9 @@ const texts = [
     "aku memiliki kesetiaan untukmu meskipun tidak bisa memberikan sentuhan dan pelukan untukmu. -Ferdi",
     "Kita dapat saling memberi kasih sayang dan cinta meski kita tidak pernah bertemu -Faraa Ferdi",
     "Faraa♡Ferdi",
-    "I Love You Baby. -Ferdi",
-    "I wish we can spend the day together. -Ferdi",
-    "Every second, I Love You. -Ferdi",
+    "I Love You Baby. -Faraa",
+    "I wish we can spend the day together. -Faraa",
+    "Every second, I Love You. -Faraa",
     "I will come for you and for our love. -Ferdi"
 
 ];
