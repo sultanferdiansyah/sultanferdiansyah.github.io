@@ -60,7 +60,11 @@ document.querySelector(".tombol").addEventListener('click', function () {
                                             Swal.fire(`${nama} udah cantik kok dimata ${sender}`).then(function () {
                                                 Swal.fire(`${nama} gak boleh insecure ya`).then(function () {
                                                     Swal.fire(`Muach <3`).then(function(){
-                                                        Swal.fire('Lopyu ayang')
+                                                        Swal.fire('Lopyu ayang').then(function(){
+                                                          Swal.fire('Terakhir Beb').then(function(){
+                                                            Swal.fire('Pencet tombol lope di bawah!')
+                                                          })
+                                                        })
                                                     })
                                                 })
                                             })
