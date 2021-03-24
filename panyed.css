@@ -101,7 +101,7 @@ body {
 }
 
 .siang {
-    background: linear-gradient(-45deg, #ebdb00, #ecd60d, #ffbc05, #f79424);
+    background: linear-gradient(-45deg, #67e8ff, #05ffea, #0dddec,  #2da0ff);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 }
